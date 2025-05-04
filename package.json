@@ -13,5 +13,13 @@
   "dependencies": {
     "express": "^5.1.0",
     "mongodb": "^6.16.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NyanLinHtet0/Fuel-Sales.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NyanLinHtet0/Fuel-Sales/issues"
+  },
+  "homepage": "https://github.com/NyanLinHtet0/Fuel-Sales#readme"
 }

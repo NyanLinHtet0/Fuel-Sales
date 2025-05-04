@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial‑scale=1.0"/>
-  <title>Fuel Sales Calculator</title>
   <!-- point up one level into the css folder -->
   <link rel="stylesheet" href="/css/index.css" />
 </head>
 <body>
-
+<!-- 
   <div class="calculator">
     <h2>Fuel Sales</h2>
 
@@ -17,25 +16,34 @@
       <div class="header">Liters</div>
       <div class="header">Kyats/Liter</div>
       <div class="header">Subtotal (₭)</div>
-      <!-- rows injected here -->
     </div>
 
     <div class="totals">
       <p>Total liters: <span id="total-liters">0.00</span> L</p>
       <p>Total money: <span id="total-money">0</span> ₭</p>
     </div>
-  </div>
+  </div> -->
 
   <div class="other">
     <h1 id="sales-date">Fuel Sales</h1>
-    <table id="sales-table">
+    <table id="sales-table" class = "table-cont">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>92 (L)</th><th>92 ₭/L</th><th>92 Amt</th>
-          <th>95 (L)</th><th>95 ₭/L</th><th>95 Amt</th>
-          <th>PD (L)</th><th>PD ₭/L</th><th>PD Amt</th>
-          <th>D (L)</th><th>D ₭/L</th><th>D Amt</th>
+          <th rowspan="2">Date</th>
+          <th colspan="2">92</th>
+          <th colspan="2">95</th>
+          <th colspan="2">Premium</th>
+          <th colspan="2">Diesel</th>
+          <th colspan="2">Total</th>
+          <th colspan="2">Accumulative Total</th>
+        </tr>
+        <tr>
+          <th>Liter</th><th>Revenue</th>
+          <th>Liter</th><th>Revenue</th>
+          <th>Liter</th><th>Revenue</th>
+          <th>Liter</th><th>Revenue</th>
+          <th>Liter</th><th>Revenue</th>
+          <th>Liter</th><th>Revenue</th>
         </tr>
       </thead>
       <tbody>

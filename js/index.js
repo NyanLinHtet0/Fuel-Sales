@@ -1,3 +1,4 @@
+/* -----------------------------------Caluclator Area Start------------------------------------ */
 const fuels = [
     { key: '92', name: 'Fuel 92' },
     { key: '95', name: 'Fuel 95' },
@@ -77,3 +78,30 @@ function calculate() {
 }
 
 document.querySelectorAll('input')[0].dispatchEvent(new Event('input'));
+/* -----------------------------------Caluclator Area End------------------------------------ */
+
+// To limit the month input from 1-12
+const input = document.getElementById('monthInput');
+input.addEventListener('input', () => {
+  const value = parseInt(input.value, 10);
+  if (value < 1 || value > 12) {
+    input.setCustomValidity("Value must be between 1 and 12");
+  } else {
+    input.setCustomValidity(""); // valid
+  }
+});
+
+// Adding a row to the table
+const table_data = []
+
+
+// to format number
+document.querySelectorAll('.rev_cell').forEach(cell => {
+    const raw = cell.textContent.replace(/,/g, ''); // just in case
+    const num = parseFloat(raw);
+    if (!isNaN(num)) {
+      cell.textContent = num.toLocaleString('en-US'); // "1,234,567"
+    }
+});
+
+

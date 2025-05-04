@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial‑scale=1.0"/>
   <!-- point up one level into the css folder -->
   <link rel="stylesheet" href="/css/index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- 
+
   <div class="calculator">
-    <h2>Fuel Sales</h2>
 
     <div class="fuel-grid">
       <div class="header">Fuel Type</div>
@@ -22,35 +22,46 @@
       <p>Total liters: <span id="total-liters">0.00</span> L</p>
       <p>Total money: <span id="total-money">0</span> ₭</p>
     </div>
-  </div> -->
-
-  <div class="other">
-    <h1 id="sales-date">Fuel Sales</h1>
-    <table id="sales-table" class = "table-cont">
-      <thead>
-        <tr>
-          <th rowspan="2">Date</th>
-          <th colspan="2">92</th>
-          <th colspan="2">95</th>
-          <th colspan="2">Premium</th>
-          <th colspan="2">Diesel</th>
-          <th colspan="2">Total</th>
-          <th colspan="2">Accumulative Total</th>
-        </tr>
-        <tr>
-          <th>Liter</th><th>Revenue</th>
-          <th>Liter</th><th>Revenue</th>
-          <th>Liter</th><th>Revenue</th>
-          <th>Liter</th><th>Revenue</th>
-          <th>Liter</th><th>Revenue</th>
-          <th>Liter</th><th>Revenue</th>
-        </tr>
-      </thead>
-      <tbody>
-
-      </tbody>
-    </table>
   </div>
+
+<div class="other">
+  <div class = "fuel-sales-header">
+    <h1>Fuel Sales</h1>
+    <input type="number" min="1" max="12" required id = "monthInput">
+  </div>
+  <table id="sales-table" class = "table-cont">
+    <thead>
+      <tr>
+        <th rowspan="2">Date</th>
+        <th colspan="2">92</th>
+        <th colspan="2">95</th>
+        <th colspan="2">Premium</th>
+        <th colspan="2">Diesel</th>
+        <th colspan="2">Total</th>
+        <th colspan="2">Accumulative Total</th>
+      </tr>
+      <tr>
+        <th>Liter</th><th>Revenue</th>
+        <th>Liter</th><th>Revenue</th>
+        <th>Liter</th><th>Revenue</th>
+        <th>Liter</th><th>Revenue</th>
+        <th>Liter</th><th>Revenue</th>
+        <th>Liter</th><th>Revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>04/01</td>
+        <td>123.45</td><td class = "rev_cell ">395040</td>
+        <td>110.00</td><td class = "rev_cell ">370000</td>
+        <td>98.20</td><td class = "rev_cell ">345700</td>
+        <td>150.75</td><td class = "rev_cell ">452250</td>
+        <td>482.40</td><td class = "rev_cell ">1564990</td>
+        <td>482.40</td><td class = "rev_cell ">1564990</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
   <!-- point up one level into the js folder -->
   <script src="/js/index.js"></script>

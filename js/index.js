@@ -91,10 +91,6 @@ input.addEventListener('input', () => {
   }
 });
 
-// Adding a row to the table
-const table_data = []
-
-
 // to format number
 document.querySelectorAll('.rev_cell').forEach(cell => {
     const raw = cell.textContent.replace(/,/g, ''); // just in case
@@ -103,5 +99,75 @@ document.querySelectorAll('.rev_cell').forEach(cell => {
       cell.textContent = num.toLocaleString('en-US'); // "1,234,567"
     }
 });
+
+
+// -------------------------------Table functions Area Start----------------------------------
+
+const salesData = [];
+
+// refs to things we need
+const addRowBtn   = document.getElementById('addRowButton');
+const monthInput  = document.getElementById('monthInput');
+const salesTbody  = document.querySelector('#sales-table tbody');
+
+addRowBtn.addEventListener('click', () => {
+    // 1) read the month/day
+    const month = String(parseInt(monthInput.value, 10) || new Date().getMonth()).padStart(2,'0');
+    // day = next row index + 1
+    const day   = String(salesData.length + 1).padStart(2,'0');
+    const date  = `${month}/${day}`;
+  
+    // 2) read each fuel amt & revenue from your calculator
+    const entry = {
+      date,
+      fuels: {}
+    };
+    let totalLiters = 0,
+        totalRevenue = 0;
+  
+    fuels.forEach(f => {
+      const amt   = parseFloat(document.getElementById(`amt-${f.key}`).value.replace(/,/g,'')) || 0;
+      const price = parseFloat(document.getElementById(`price-${f.key}`).value.replace(/,/g,'')) || 0;
+      const rev   = Math.round(amt * price);
+  
+      entry.fuels[f.key] = { liters: amt, revenue: rev };
+  
+      totalLiters  += amt;
+      totalRevenue += rev;
+    });
+  
+    entry.total = { liters: totalLiters, revenue: totalRevenue };
+  
+    // 3) compute accumulative totals
+    if (salesData.length > 0) {
+      const prev = salesData[salesData.length-1].accumulative;
+      entry.accumulative = {
+        liters:   prev.liters  + totalLiters,
+        revenue:  prev.revenue + totalRevenue
+      };
+    } else {
+      entry.accumulative = { liters: totalLiters, revenue: totalRevenue };
+    }
+  
+    // 4) save into local array
+    salesData.push(entry);
+  
+    // 5) render a new row in the table
+    const tr = salesTbody.insertRow();
+    tr.insertCell().textContent = entry.date;
+  
+    // for each fuel type
+    ['92','95','premium','diesel'].forEach(key => {
+      tr.insertCell().textContent = entry.fuels[key].liters.toFixed(2);
+      tr.insertCell().textContent = entry.fuels[key].revenue.toLocaleString();
+    });
+  
+    // total & accumulative
+    tr.insertCell().textContent = entry.total.liters.toFixed(2);
+    tr.insertCell().textContent = entry.total.revenue.toLocaleString();
+    tr.insertCell().textContent = entry.accumulative.liters.toFixed(2);
+    tr.insertCell().textContent = entry.accumulative.revenue.toLocaleString();
+  });
+  
 
 

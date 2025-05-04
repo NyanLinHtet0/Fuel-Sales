@@ -64,10 +64,15 @@ body {
 /* reserved for later */
 }
 
-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem;}
-th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: right; }
+table { 
+    width: 100%; 
+    margin-bottom: 1rem;
+    border-style: solid;
+}
+
+/* th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: right; }
 th { background: #f0f0f0; }
 td.input-cell input { 
     width: 5rem; 
 }
-tfoot td { font-weight: bold; }
+tfoot td { font-weight: bold; } */

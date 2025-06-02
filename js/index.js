@@ -91,15 +91,6 @@ input.addEventListener('input', () => {
   }
 });
 
-// to format number
-document.querySelectorAll('.rev_cell').forEach(cell => {
-    const raw = cell.textContent.replace(/,/g, ''); // just in case
-    const num = parseFloat(raw);
-    if (!isNaN(num)) {
-      cell.textContent = num.toLocaleString('en-US'); // "1,234,567"
-    }
-});
-
 
 // -------------------------------Table functions Area Start----------------------------------
 

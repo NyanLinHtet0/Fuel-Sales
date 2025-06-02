@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path');
 const app = express()
-const port = 3000
+const port = 3001
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const uri = "mongodb+srv://nyanlinhtet:D3menter!@custermain.iddklp5.mongodb.net/?retryWrites=true&w=majority&appName=Custermain";

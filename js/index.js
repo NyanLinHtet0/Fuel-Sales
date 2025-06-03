@@ -104,15 +104,15 @@ async function loadSales() {
     datarow.insertCell().textContent = r.date;
     // for each fuel type
     ['92','95','premium','diesel'].forEach(key => {
-      datarow.insertCell().textContent = r.fuels[key].liters
-      datarow.insertCell().textContent = r.fuels[key].revenue
+      datarow.insertCell().textContent = r.fuels[key].liters.toFixed(2);
+      datarow.insertCell().textContent = r.fuels[key].revenue.toLocaleString();
     });
   
     // // total & accumulative
-    datarow.insertCell().textContent = r.total.liters
-    datarow.insertCell().textContent = r.total.revenue
-    datarow.insertCell().textContent = r.accumulative.liters
-    datarow.insertCell().textContent = r.accumulative.revenue
+    datarow.insertCell().textContent = r.total.liters.toFixed(2);
+    datarow.insertCell().textContent = r.total.revenue.toLocaleString();
+    datarow.insertCell().textContent = r.accumulative.liters.toFixed(2);
+    datarow.insertCell().textContent = r.accumulative.revenue.toLocaleString();
     tbody.appendChild(datarow);
   });
 }

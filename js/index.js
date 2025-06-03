@@ -93,7 +93,30 @@ input.addEventListener('input', () => {
 
 
 // -------------------------------Table functions Area Start----------------------------------
+async function loadSales() {
+  const res  = await fetch('/api/fuel-sales');
+  const rows = await res.json();
 
+  const tbody = document.getElementById('sales-table');
+  console.log(rows)
+  rows.forEach(r => {
+    const datarow = tbody.insertRow();
+    datarow.insertCell().textContent = r.date;
+    // for each fuel type
+    ['92','95','premium','diesel'].forEach(key => {
+      datarow.insertCell().textContent = r.fuels[key].liters
+      datarow.insertCell().textContent = r.fuels[key].revenue
+    });
+  
+    // // total & accumulative
+    datarow.insertCell().textContent = r.total.liters
+    datarow.insertCell().textContent = r.total.revenue
+    datarow.insertCell().textContent = r.accumulative.liters
+    datarow.insertCell().textContent = r.accumulative.revenue
+    tbody.appendChild(datarow);
+  });
+}
+loadSales();
 const salesData = [];
 
 // refs to things we need
@@ -159,6 +182,20 @@ addRowBtn.addEventListener('click', () => {
     tr.insertCell().textContent = entry.accumulative.liters.toFixed(2);
     tr.insertCell().textContent = entry.accumulative.revenue.toLocaleString();
   });
+
+//Submit button ---------------------------------------------------------------------------
+
+const submit_button = document.getElementById("table_submit_button")
+
+submit_button.addEventListener('click', async ()=>{
+    await fetch("/api/fuel-sales", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(salesData)
+  })
+  .then(r => r.json())
+  .then(j => alert(j.ok ? "Saved!" : "Server error"));
+});
   
 
 
